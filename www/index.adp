@@ -10,7 +10,6 @@
 <property name="title">#chat.Chat_main_page#</property>
 
 
-
 <if @room_create_p@ ne 0>
 [<a href="room-new">#chat.Create_a_new_room#</a>]
 </if>
