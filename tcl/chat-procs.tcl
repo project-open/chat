@@ -351,6 +351,33 @@ ad_proc -public chat_moderate_message_post {
     ns_mutex unlock [nsv_get chat new_message]
 }
 
+
+
+
+ad_proc -public chat_urlify_msg {
+    msg
+} {
+    Convert all www.xxx.com into hyperlinks, adding an <A>..</a>.
+} {
+
+    # Check for www.xxxxx.yyy and build a new 
+    # message line from the outer parts + url
+    if {[regexp {(www\.[a-zA-Z0-9\-]+\.[a-zA-Z]+)} $msg match url]} {
+	set msg_len [string length $msg]
+	set left_idx [string first $url $msg]
+	set left [string range $msg 0 [expr $left_idx - 1]]
+	set right_start [expr $left_idx + [string length $url]]
+	set right [string range $msg $right_start $msg_len]
+	set link "<a href=\"http://$url\" target=training>$url</a>"
+	set msg "$left$link$right"
+    }
+
+    # Here we may check for email, other types of links etc.
+
+    return $msg
+}
+
+
 ad_proc -public chat_message_retrieve {
     msgs
     room_id
@@ -372,7 +399,6 @@ ad_proc -public chat_message_retrieve {
     upvar "$msgs:rowcount" counter
 
     set chat_messages [nsv_get chat_room $room_id]
-
     set count [llength $chat_messages]
 
     set cnt $count
@@ -381,10 +407,16 @@ ad_proc -public chat_message_retrieve {
     #foreach msg $chat_messages 
     for { set i [expr $cnt - 1] } { $i >= 0 } { set i [expr $i - 1] } {
 	set msg [lindex $chat_messages $i]
+
 	regexp "<from>(.*)</from>" $msg match screen_name
 	regexp "<body>(.*)</body>" $msg match chat_msg
 	regexp "<status>(.*)</status>" $msg match status
 
+#	ad_return_complaint 1 "screen_name=$screen_name, chat_msg=$chat_msg, status=$status"
+
+	# Make www.xxx.com into a clickable link
+	set chat_msg [ns_quotehtml $chat_msg]
+	set chat_msg [chat_urlify_msg $chat_msg]
 
 	if {$status == "pending" || $status == "rejected"} {
 	    continue;
