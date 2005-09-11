@@ -9,4 +9,13 @@
 <property name="context">@context_bar;noquote@</property>
 <property name="title">#chat.Unauthorized#</property>
 
+<h1>#chat.Unauthorized#</h1>
+<p>
 #chat.You_dont_have_permission_room#. 
+</p>
+
+<p>
+Maybe you have to 
+<a href="/register/">login to this server</a> 
+first?
+</p>
