@@ -360,9 +360,24 @@ ad_proc -public chat_urlify_msg {
     Convert all www.xxx.com into hyperlinks, adding an <A>..</a>.
 } {
 
+    # Check for http://xxxxx/.../.../
+    # message line from the outer parts + url
+    # This is the more specific variant.
+    if {[regexp {(http\:\/\/[a-zA-Z0-9\-\.]+(/[^\ \/]*)*)} $msg match url]} {
+	set msg_len [string length $msg]
+	set left_idx [string first $url $msg]
+	set left [string range $msg 0 [expr $left_idx - 1]]
+	set right_start [expr $left_idx + [string length $url]]
+	set right [string range $msg $right_start $msg_len]
+	set link "<a href=\"$url\" target=training>$url</a>"
+	set msg "$left$link$right"
+	return $msg
+    }
+
     # Check for www.xxxxx.yyy and build a new 
     # message line from the outer parts + url
-    if {[regexp {(www\.[a-zA-Z0-9\-]+\.[a-zA-Z]+)} $msg match url]} {
+    # this is the more generic variant
+    if {[regexp {(www\.[a-zA-Z0-9\-]+\.[a-zA-Z]+(/[^\ \/]*)*)} $msg match url]} {
 	set msg_len [string length $msg]
 	set left_idx [string first $url $msg]
 	set left [string range $msg 0 [expr $left_idx - 1]]
@@ -370,6 +385,7 @@ ad_proc -public chat_urlify_msg {
 	set right [string range $msg $right_start $msg_len]
 	set link "<a href=\"http://$url\" target=training>$url</a>"
 	set msg "$left$link$right"
+	return $msg
     }
 
     # Here we may check for email, other types of links etc.
@@ -382,6 +398,7 @@ ad_proc -public chat_message_retrieve {
     msgs
     room_id
     user_id
+    { template_p 0}
 } {
     Retrieve all messages from the chat room starting from first_msg_id. Return messages are store in multirow format.
 } {

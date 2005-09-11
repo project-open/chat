@@ -26,7 +26,10 @@
 
         <td valign=top>
             [<a href="room-enter?room_id=@rooms.room_id@&client=html">#chat.HTML_chat#</a>]
-            [<a href="room-enter?room_id=@rooms.room_id@&client=java">#chat.Java_chat#</a>]<if @rooms.moderated_p@> (#chat.Moderated#) </if>
+<!--
+            [<a href="room-enter?room_id=@rooms.room_id@&client=java">#chat.Java_chat#</a>]
+	    <if @rooms.moderated_p@> (#chat.Moderated#) </if>
+-->
 	    <if @rooms.admin_p@ eq "t">[<a href="room?room_id=@rooms.room_id@">#chat.room_admin#</a>] #chat.Active#:@rooms.active_p@</if>
         </td>
 

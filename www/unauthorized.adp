@@ -16,6 +16,10 @@
 
 <p>
 Maybe you have to 
-<a href="/register/">login to this server</a> 
+<a href="/register/index?return_url=@return_url;noquote@">login to this server</a> 
 first?
+</p>
+
+<p>
+@return_url;noquote@
 </p>

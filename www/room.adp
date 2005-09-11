@@ -26,17 +26,7 @@
 <p><i>#chat.No_information_available#.
 </else>
 
-<p><b>#chat.Users_allow#</b>
-<ul>
-<multiple name=users_allow>
-   <li>@users_allow.name@
-   <if @user_revoke_p@ eq "1">(<a href="user-revoke?room_id=@room_id@&party_id=@users_allow.party_id@">#chat.revoke#</a>)</if>
-</multiple>
-   <if @user_grant_p@ eq "1">
 
-   <p>(<a href="user-grant?room_id=@room_id@">#chat.Grant_user#</a>)
-   </if>
-</ul>
 <b>#chat.Users_ban#</b>
 <ul>
 <multiple name=users_ban>

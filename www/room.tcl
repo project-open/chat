@@ -80,7 +80,7 @@ db_1row room_info {
 db_multirow moderators list_moderators {}
 
 # List authorized chat users.
-db_multirow users_allow list_user_allow {}
+# db_multirow users_allow list_user_allow {}
 
 # List user ban from chat
 db_multirow users_ban list_user_ban {}

@@ -30,12 +30,13 @@ if { [catch {set room_name [chat_room_name $room_id]} errmsg] } {
 }
 
 set context_bar [list $room_name]
-
 set user_id [ad_conn user_id]
-
 set read_p [ad_permission_p $room_id "chat_read"]
 set write_p [ad_permission_p $room_id "chat_write"]
 set ban_p [ad_permission_p $room_id "chat_ban"]
+set admin_p [ad_permission_p $room_id "chat_moderator"]
+
+#ad_return_complaint 1 "moderator=$moderator_p"
 
 set moderate_room_p [chat_room_moderate_p $room_id]
 
@@ -55,6 +56,10 @@ if { ($read_p == "0" && $write_p == "0") || ($ban_p == "1") } {
 # Get chat screen name.
 set user_name [chat_user_name $user_id]
 # Determine which template to use for html or java client
+
+
+chat_message_retrieve template_msgs $room_id $user_id 1
+
 
 switch $client {
 
@@ -89,11 +94,6 @@ switch $client {
 }
 
 ad_return_template $template_use
-
-
-
-
-
 
 
 

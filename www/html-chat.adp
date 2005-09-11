@@ -10,7 +10,7 @@
 </tr>
 
 <tr>
-  <td>Msgs:</td>
+  <td></td>
   <td>
 	<IFRAME 
 		SRC=@iframe_url;noquote@ 
@@ -18,7 +18,7 @@
 		WIDTH=400 
 		HEIGHT=300 
 		SCROLLING=NO 
-		FRAMEBORDER=1
+		FRAMEBORDER=0
 	>
 	Your browser doesn't support IFrames.<br>
 	This IFrame should have shown you a chat
@@ -36,6 +36,13 @@
 	<input type=hidden name="room_id" value="@room_id@">
 	<input type=hidden name="client" value="html">
 	<input type=submit value="Send">
+
+<if @admin_p@ eq 1>
+	<input type=checkbox name=template_p> Template
+</if>
+<else>
+	<input type=hidden name=template_p value="">
+</else>
 	</form>
   </td>
 </tr>
@@ -43,22 +50,23 @@
 </table>
 
 
-
 <!--
 <ul>
-
 <if @message@ ne "">
-<if @moderator_p@ eq "1">
-@user_name@: @message@<br>
+  <if @moderator_p@ eq "1">
+    @user_name@: @message@<br>
+  </if>
 </if>
-</if>
-<multiple name=msgs>
-@msgs.screen_name@: @msgs.chat_msg@<br>
-</multiple>
-
 </ul>
-
 -->
 
+<if @admin_p@ eq 1>
 
+  <h2>Template Message: @admin_p@</h2>
+
+  <multiple name=template_msgs>
+  @template_msgs.chat_msg;noquote@<br>
+  </multiple>
+
+</if>
 

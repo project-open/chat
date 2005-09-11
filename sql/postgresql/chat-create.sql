@@ -337,7 +337,12 @@ create table chat_msgs (
     creation_date      date
                        constraint chat_msgs_creation_date_nn not null,
     room_id            integer
-                       constraint chat_msgs_room_id_fk references chat_rooms
+                       constraint chat_msgs_room_id_fk references chat_rooms,
+		       -- allow the admin to use these messages as canned replies
+    template_p         boolean
+                       default 'f'
+                       constraint chat_msgs_template_p_ck
+                       check(approved_p in ('t','f'))
 );
 
 

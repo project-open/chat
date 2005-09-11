@@ -13,6 +13,8 @@ ad_page_contract {
 chat_start_server
 set user_id [ad_conn user_id]
 
+set return_url [ns_urlencode "[ns_conn url]?[ns_conn query]" ]
+
 set read_p  [ad_permission_p $room_id "chat_read"]
 set write_p [ad_permission_p $room_id "chat_write"]
 set ban_p   [ad_permission_p $room_id "chat_ban"]
@@ -21,7 +23,7 @@ set active  [room_active_status $room_id]
 
 if { ($read_p == "0" && $write_p == "0") || ($ban_p == "1") || ($active == "f") } {
     #Display unauthorize privilege page.
-    ad_returnredirect unauthorized
+    ad_returnredirect unauthorized?[export_url_vars return_url]
     ad_script_abort
 }
 if {$client == "html"} {
