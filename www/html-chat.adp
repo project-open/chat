@@ -1,5 +1,5 @@
 <master>
-<property name="context">@context_bar;noquote@</property>
+<property name="context">@context;noquote@</property>
 <property name="title">@room_name;noquote@</property>
 
 

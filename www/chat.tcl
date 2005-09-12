@@ -30,7 +30,9 @@ if { [catch {set room_name [chat_room_name $room_id]} errmsg] } {
     ad_return_complaint 1 "[_ chat.Room_not_found]"
 }
 
-set context_bar [list $room_name]
+set title $room_name
+set context [list $title]
+
 set user_id [ad_conn user_id]
 set read_p [ad_permission_p $room_id "chat_read"]
 set write_p [ad_permission_p $room_id "chat_write"]

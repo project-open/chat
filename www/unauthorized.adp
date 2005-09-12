@@ -20,6 +20,3 @@ Maybe you have to
 first?
 </p>
 
-<p>
-@return_url;noquote@
-</p>
