@@ -320,7 +320,8 @@ ad_proc -public chat_message_post {
     message
     moderator_p
 } {
-    Post message to the chat room and broadcast to all applet clients. Only use by HTML client.
+    Post message to the chat room and broadcast to all applet clients. 
+    Only use by HTML client.
 } {
     if {$moderator_p == "1" } {
 	set status "approved"
@@ -398,7 +399,6 @@ ad_proc -public chat_message_retrieve {
     msgs
     room_id
     user_id
-    { template_p 0}
 } {
     Retrieve all messages from the chat room starting from first_msg_id. Return messages are store in multirow format.
 } {

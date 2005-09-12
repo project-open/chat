@@ -10,6 +10,7 @@ ad_page_contract {
     room_id
     client
     {message:html ""}
+    {template_p 0}
 } -properties {
     context_bar:onevalue
     user_id:onevalue
@@ -36,7 +37,8 @@ set write_p [ad_permission_p $room_id "chat_write"]
 set ban_p [ad_permission_p $room_id "chat_ban"]
 set admin_p [ad_permission_p $room_id "chat_moderator"]
 
-#ad_return_complaint 1 "moderator=$moderator_p"
+set iframe_url "/chat/chat?room_id=$room_id&client=plain"
+set base_url "/chat/chat?room_id=$room_id&client=html"
 
 set moderate_room_p [chat_room_moderate_p $room_id]
 
@@ -58,8 +60,9 @@ set user_name [chat_user_name $user_id]
 # Determine which template to use for html or java client
 
 
-chat_message_retrieve template_msgs $room_id $user_id 1
-
+# Get all messages fromt the current user in this room
+# marketd as "template_p". These are "saved messages" that
+# this user might want to use again.
 
 switch $client {
 
@@ -88,19 +91,47 @@ switch $client {
 	chat_message_retrieve msgs $room_id $user_id
 	if { ![empty_string_p $message] } {
 	    chat_message_post $room_id $user_id $message $moderator_p
+
+	    # Very, very ugly. I guess that chat_message_post really
+	    # communicates with the chat server that in turn addes the
+	    # message to the database. So this takes time, and we'll
+	    # want to make sure that we'll really get the _last_ msg.
+	    exec sleep 1
+
+	    if {$template_p} {
+		# Mark the last message posted by this user in this room
+		# with "template_p = 't'". I've got _no_ idea who the msgs
+		# enter into the DB, but it seems to work somehow with
+		# chat_message_post ... :-(
+		#
+		db_dml update_chat_msgs_template "
+			update chat_msgs
+			set template_p = 't'
+			where msg_id in (
+				select	max(msg_id)
+				from	chat_msgs
+				where	creation_user = :user_id
+					and room_id = :room_id
+			)
+		"
+
+	    }
 	}
-	set iframe_url "/chat/chat?room_id=$room_id&client=plain"
     }
 }
 
+
+# Get all template messages
+db_multirow template_msgs template_msgs {
+	
+}
+
+
+db_multirow -extend { msg_encoded } template_msgs template_msgs {} {
+    set msg_encoded [ns_urlencode $msg]
+}
+
+
+
+
 ad_return_template $template_use
-
-
-
-
-
-
-
-
-
-
