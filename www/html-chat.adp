@@ -3,11 +3,14 @@
 <property name="title">@room_name;noquote@</property>
 
 
-<table>
-<tr>
+<table valign=top>
+<tr valign=top>
 <td>
 
-	<table valign=middle>
+	<table cellpadding=1 cellspacing=0 class="table-display">
+	<tr class="table-header">
+	  <th colspan=2>Chat Room</th>
+	</tr>
 	<tr>
 	  <td></td>
 	  <td>[<a href="room-exit?room_id=@room_id@">#chat.Log_off#</a>]</td>
@@ -57,23 +60,21 @@
 <if @admin_p@ eq 1>
 
 	<form action="del-messages" method=POST>
-	<%= [export_form_vars return_url] %>
-	<table cellpadding=0 cellspacing=0 class="table-display">
+	@export_form_vars;noquote@
+	<table cellpadding=1 cellspacing=0 class="table-display">
 	<tr class="table-header">
-	  <th>Msg</th>
+	  <th>Tempate Messages</th>
 	  <th>Del</th>
 	</tr>
 	
 	<multiple name=template_msgs>
 	<tr>
 	  <td class="odd" width=400>
-	    <a href="@base_url@&message=@template_msgs.msg_encoded@">
-	      @template_msgs.msg;noquote@
-	    </a>
+	    <a href="@base_url@&message=@template_msgs.msg_encoded@">@template_msgs.msg;noquote@</a>
 	    <br>
 	  </td>
 	  <td class="odd">
-	    <input type=checkbox name=del.@template_msgs.msg_id@>
+	    <input type=checkbox name=msg.@template_msgs.msg_id@ value="1">
 	  </td>
 	</tr>
 	</multiple>

@@ -32,6 +32,7 @@ if { [catch {set room_name [chat_room_name $room_id]} errmsg] } {
 
 set title $room_name
 set context [list $title]
+set return_url "[ns_conn url]?[ns_conn query]"
 
 set user_id [ad_conn user_id]
 set read_p [ad_permission_p $room_id "chat_read"]
@@ -91,6 +92,9 @@ switch $client {
 	# HTML Chat - contains an IFrame with the messages
 	set template_use "html-chat"
 	chat_message_retrieve msgs $room_id $user_id
+
+	set export_form_vars [export_form_vars room_id return_url]
+
 	if { ![empty_string_p $message] } {
 	    chat_message_post $room_id $user_id $message $moderator_p
 
