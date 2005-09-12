@@ -1,7 +1,8 @@
 <master>
-<property name="context">@context;noquote@</property>
-<property name="title">@room_name;noquote@</property>
-
+  <property name="context">@context;noquote@</property>
+  <property name="title">@room_name;noquote@</property>
+  <property name="focus">asdf</property>
+  <property name="focus">message.message</property>
 
 <table valign=top>
 <tr valign=top>
@@ -37,7 +38,7 @@
 	<tr>
 	  <td></td>
 	  <td>
-		<form method=post action="chat">
+		<form name=message method=post action="chat">
 		<input name=message size=40>
 		<input type=hidden name="room_id" value="@room_id@">
 		<input type=hidden name="client" value="html">

@@ -3,6 +3,7 @@
   <meta http-equiv="refresh" content="5">
 </property>
 
+
 <if @message@ ne "">
 <if @moderator_p@ eq "1">
 @user_name@: @message@<br>

@@ -32,6 +32,8 @@ if { [catch {set room_name [chat_room_name $room_id]} errmsg] } {
 
 set title $room_name
 set context [list $title]
+set focus "message.message"
+
 set return_url "[ns_conn url]?[ns_conn query]"
 
 set user_id [ad_conn user_id]
