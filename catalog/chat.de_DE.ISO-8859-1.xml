@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<message_catalog package_key="chat" package_version="5.0d1" locale="de_DE" charset="ISO-8859-1">
+
+  <msg key="Active">Active</msg>
+  <msg key="Add_moderator">Add moderator</msg>
+  <msg key="Archive">Archive</msg>
+</message_catalog>
