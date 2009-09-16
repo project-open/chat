@@ -2,6 +2,9 @@
 <message_catalog package_key="chat" package_version="5.0d1" locale="de_DE" charset="ISO-8859-1">
 
   <msg key="Active">Active</msg>
-  <msg key="Add_moderator">Add moderator</msg>
+  <msg key="Add_moderator">Moderator hinzufügen</msg>
   <msg key="Archive">Archive</msg>
+  <msg key="Delete_all_messages_in_the_room">Alle Nachrichten in diesem Raum löschen</msg>
+  <msg key="Delete_messages">Nachrichten löschen</msg>
+  <msg key="Yes">Ja</msg>
 </message_catalog>

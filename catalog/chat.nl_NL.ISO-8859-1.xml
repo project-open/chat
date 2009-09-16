@@ -39,6 +39,11 @@
   <msg key="Edit_transcript">Transcript bewerken</msg>
   <msg key="Extreme_Actions">Extreme acties</msg>
   <msg key="from">van</msg>
+  <msg key="Grant">Toestemming verlenen</msg>
+  <msg key="Grant_chat_read_rite_privilege_for">Verleen chat lees/schrijf rechten voor</msg>
+  <msg key="Grant_moderator">Verleen moderator rechten</msg>
+  <msg key="Grant_moderator_for">Verleen moderator rechten voor</msg>
+  <msg key="Grant_user">Verleen gebruikersrechten</msg>
   <msg key="has_entered_the_room">is de ruimte binnen gekomen</msg>
   <msg key="has_left_the_room">heeft de ruimte verlaten</msg>
   <msg key="HTML_chat">HTML chat</msg>
@@ -46,6 +51,7 @@
   <msg key="key">sleutel</msg>
   <msg key="Log_off">Uitloggen</msg>
   <msg key="messages_in">berichten in</msg>
+  <msg key="Moderated">Moderated</msg>
   <msg key="Name">Naam</msg>
   <msg key="No_information_available">Geen informatie beschikbaar</msg>
   <msg key="remove">verwijderen</msg>
@@ -55,6 +61,7 @@
   <msg key="Revoke_user">Gebruiker weer toelaten</msg>
   <msg key="room_admin">Administratie mbt ruimte</msg>
   <msg key="Room_Information">Informatie over ruimte</msg>
+  <msg key="Room_moderators">Room moderators</msg>
   <msg key="Room_name">Naam ruimte</msg>
   <msg key="Room_not_found">Ruimte niet gevonden, ongeldige ruimte_id</msg>
   <msg key="Send_Refresh">Verzenden/verversen</msg>
