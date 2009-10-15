@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<message_catalog package_key="chat" package_version="5.0d1" locale="de_DE" charset="ISO-8859-1">
+
+  <msg key="Active">Active</msg>
+  <msg key="Add_moderator">Moderator hinzufügen</msg>
+  <msg key="Archive">Archive</msg>
+  <msg key="Are_you_sure_you_want_to_delete">Sind Sie sicher, dass Sie löschen möchten</msg>
+  <msg key="Chat">Chat</msg>
+  <msg key="Chat_main_page">Chat Hauptseite</msg>
+  <msg key="Confirm_chat_transcript_delete">Chatprotokoll löschen bestätigen</msg>
+  <msg key="Confirm_message_delete">Nachricht löschen bestätigen</msg>
+  <msg key="Confirm_revoke_moderator">Moderator widerrufen bestätigen</msg>
+  <msg key="Contents">Inhalt</msg>
+  <msg key="Could_not_update_room">Konnte Raum nicht aktualisieren</msg>
+  <msg key="Could_not_update_transcript">Konnte Protokoll nicht aktualisieren</msg>
+  <msg key="Delete_all_messages_in_the_room">Alle Nachrichten in diesem Raum löschen</msg>
+  <msg key="Delete_messages">Nachrichten löschen</msg>
+  <msg key="has_entered_the_room">hat den Raum betreten</msg>
+  <msg key="has_left_the_room">hat den Raum verlassen</msg>
+  <msg key="HTML_chat">HTML Chat</msg>
+  <msg key="Java_chat">Java Chat</msg>
+  <msg key="key">Schlüssel</msg>
+  <msg key="Log_off">Abmelden</msg>
+  <msg key="messages_in">Nachrichten in</msg>
+  <msg key="Name">Name</msg>
+  <msg key="remove">entfernen</msg>
+  <msg key="Revoke">Widerrufen</msg>
+  <msg key="revoke">widerrufen</msg>
+  <msg key="Revoke_moderator">Moderator widerrufen</msg>
+  <msg key="Room_name">Raumname</msg>
+  <msg key="Room_not_found">Raum nicht gefunden, ungültige Raum ID</msg>
+  <msg key="There_are_no_rooms_available">Kein Raum verfügbar</msg>
+  <msg key="Update_room">Raum aktualisieren</msg>
+  <msg key="Yes">Ja</msg>
+</message_catalog>
