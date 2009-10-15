@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<message_catalog package_key="chat" package_version="5.0d1" locale="pt_PT" charset="ISO-8859-1">
+
+  <msg key="Active">Activo</msg>
+  <msg key="Add_moderator">Adicionar moderador</msg>
+  <msg key="Archive">Arquivo</msg>
+  <msg key="Are_you_sure_you_want_to_delete">Tem a certeza que quer eliminar</msg>
+  <msg key="Yes">Sim</msg>
+</message_catalog>
